@@ -1,0 +1,18 @@
+#player-board{
+    display: grid;
+    grid-template-rows: repeat(10, 30px);
+    grid-template-columns: repeat(10, 30px);
+
+}
+
+.cell {
+    border: solid black .2px;
+}
+
+.cell-hit{
+    background-color: red;
+}
+
+.cell-not-hit {
+    background-color: aqua;
+}
