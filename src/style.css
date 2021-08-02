@@ -1,4 +1,17 @@
+.boards{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
 #player-board{
+    display: grid;
+    grid-template-rows: repeat(10, 30px);
+    grid-template-columns: repeat(10, 30px);
+
+}
+
+#cpu-board{
     display: grid;
     grid-template-rows: repeat(10, 30px);
     grid-template-columns: repeat(10, 30px);

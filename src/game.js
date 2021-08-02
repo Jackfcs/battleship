@@ -2,41 +2,34 @@ import Ship from "./factories/Ship";
 import GameBoard from "./factories/GameBoard";
 
 export const game = () => {
-
   let playerBoard = GameBoard();
+  let cpuBoard = GameBoard()
   console.log(playerBoard.board);
   playerBoard.receiveAttack(2);
   playerBoard.receiveAttack(6);
   const playerBoardContainer = document.getElementById("player-board");
 
+const fillBoard = (cell, board, boardArray) => {
+  let playersCells = Array.from(document.querySelectorAll(cell));
 
-  // Add board and cells to dom
-  const addToDom = (array) => {
-    //clearHTML(playerBoardContainer)
-    array.map((item) => {
-      let cell = document.createElement("div");
-      cell.classList.add("cell");
-      if (item.hit) {
+  playersCells.forEach((cell) => {
+    if (boardArray[playersCells.indexOf(cell)].hit) {
+        cell.classList.remove("cell-not-hit");
         cell.classList.add("cell-hit");
-      } else {
-        cell.classList.add("cell-not-hit");
       }
-      playerBoardContainer.appendChild(cell);
+    cell.addEventListener("click", () => {
+      board.receiveAttack(playersCells.indexOf(cell));
+      if (boardArray[playersCells.indexOf(cell)].hit) {
+        cell.classList.remove("cell-not-hit");
+        cell.classList.add("cell-hit");
+      }
     });
-  };
+  });
+}
 
-  addToDom(playerBoard.board);
+fillBoard(".player-cell", playerBoard, playerBoard.board)
+fillBoard(".cpu-cell", cpuBoard, cpuBoard.board)
 
-  //Recognise click in cells
 
-  let cells = document.querySelectorAll(".cell");
 
-  for (let i = 0; i < cells.length; i++) {
-    cells[i].addEventListener("click", () => {
-      console.log(i);
-      playerBoard.receiveAttack(i);
-      addToDom(playerBoard.board);
-      console.log(playerBoard.board[i]);
-    });
-  }
 };

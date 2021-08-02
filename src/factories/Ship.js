@@ -16,12 +16,9 @@ const Ship = (length, id) => {
 
     // Check if ship has been sunk
     const isSunk = () => {
-         let checkSunk = sectors.every(elem => elem === true);
-         if (checkSunk === true){
-             return true
-         } else {
-             return false
-         }
+
+        return sectors.every(elem => elem === true);
+        
     }
 
    
