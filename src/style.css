@@ -23,9 +23,18 @@
 }
 
 .cell-hit{
-    background-color: red;
+    background-color: rgb(9, 13, 245);
 }
 
 .cell-not-hit {
     background-color: aqua;
 }
+
+.cell-ship {
+    background-color: grey;
+}
+
+.cell-ship-hit {
+    background-color: red;
+}
+
