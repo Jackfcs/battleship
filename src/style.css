@@ -38,3 +38,15 @@
     background-color: red;
 }
 
+.ship{
+    display: flex;
+    flex-direction: row;
+    margin: 10px;
+}
+
+.ship-cell{
+    height: 30px;
+    width: 30px;
+    background-color: grey;
+}
+
