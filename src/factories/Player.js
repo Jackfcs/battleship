@@ -2,7 +2,7 @@ const Player = (name) => {
     let turns = []
 
     const randomMove = (board) => {
-        let num = Math.floor(Math.random() * 10);
+        let num = Math.floor(Math.random() * 100);
         return num
       
     };
