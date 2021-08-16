@@ -33,7 +33,7 @@ export const game = () => {
       cell.addEventListener("click", () => {
         if (!board.board.some((obj) => obj.shipID)) {
           board.placeShip(ship1, index);
-          shipBtn1.style.display = "none";
+          //shipBtn1.style.display = "none";
           gameInfo.textContent = "Place your second ship";
         } else if (
           board.board.some(
@@ -43,7 +43,7 @@ export const game = () => {
         ) {
           board.placeShip(ship2, index);
           gameInfo.textContent = "Place your third ship";
-          shipBtn2.style.display = "none";
+          //shipBtn2.style.display = "none";
         } else if (
           board.board.some(
             (obj) =>
@@ -51,7 +51,7 @@ export const game = () => {
           )
         ) {
           board.placeShip(ship3, index);
-          shipBtn3.style.display = "none";
+          //shipBtn3.style.display = "none";
           gameInfo.textContent = "Place your fourth ship";
         } else if (
           board.board.some(
@@ -110,11 +110,10 @@ export const game = () => {
         board.receiveAttack(index);
         updateBoard(cpuBoard, cpuCells);
         //turnCount++;
-        
+
         cpuAttack();
       });
     });
-    
   };
 
   const cpuPlace = () => {
@@ -137,7 +136,6 @@ export const game = () => {
   };
 
   hitBoard(cpuBoard);
-
 
   // const declareWinner = () => {
   //   if (playerBoard.board.some((obj) => obj.isShip && !playerBoard.board.some((obj) => obj.hit === false))) {

@@ -1,10 +1,13 @@
+const { expect } = require('@jest/globals')
 const GameBoard = require('../factories/GameBoard')
 const Ship = require('../factories/Ship')
 
 let testShip
+let testShip1
 let testBoard
 beforeAll(() => {
     testShip = Ship(3)
+    testShip1 = Ship(4)
     testBoard = GameBoard()
 })
 
@@ -32,6 +35,7 @@ test("GameBoard can receive a ship at the given position", () => {
 
 test.todo("Gameboard registers on ship sector as well as board");
 
+
 test("Gameboard can report when all ships are sunk", () => {
     testBoard.placeShip(testShip, 2)
     testBoard.receiveAttack(2)
@@ -42,8 +46,17 @@ test("Gameboard can report when all ships are sunk", () => {
 
 });
 
-test.todo("Gameboard prevents overlapping ships");
+test("Gameboard prevents overlapping ships", () => {
+
+    testBoard.placeShip(testShip, 9)
+
+    expect(() => testBoard.placeShip(testShip1, 10).toBeUndefined());
+});
+
+test("Prevents positioning ships that clip over perimeter", () => {
+    expect(() => testBoard.placeShip(testShip1, ).toBeUndefined());
+});
 
 test.todo("Ships can be placed in a vertical position");
 
-test.todo("Prevents positioning ships that clip over perimeter");
+
