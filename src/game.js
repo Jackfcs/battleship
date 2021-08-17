@@ -68,13 +68,13 @@ export const game = () => {
               obj.shipID === 4 && !board.board.some((obj) => obj.shipID === 5)
           )
         ) {
+          cpuPlace();
           board.placeShip(ship5, index);
           shipBtn5.style.display = "none";
           gameInfo.textContent = "Attack Enemy Board";
           cpuBoardContainer.style.display = "grid";
-          cpuPlace();
+          
           shipPlacementPhase = false;
-          console.log(shipPlacementPhase);
         }
         updateBoard(board, playerCells);
       });
@@ -117,11 +117,11 @@ export const game = () => {
   };
 
   const cpuPlace = () => {
-    cpuBoard.placeShip(ship1, cpu.randomMove());
-    cpuBoard.placeShip(ship2, cpu.randomMove());
-    cpuBoard.placeShip(ship3, cpu.randomMove());
-    cpuBoard.placeShip(ship4, cpu.randomMove());
-    cpuBoard.placeShip(ship5, cpu.randomMove());
+    cpuBoard.placeShip(ship1, cpu.randomPlace(cpuBoard.board, ship1));
+    cpuBoard.placeShip(ship2, cpu.randomPlace(cpuBoard.board, ship2));
+    cpuBoard.placeShip(ship3, cpu.randomPlace(cpuBoard.board, ship3));
+    cpuBoard.placeShip(ship4, cpu.randomPlace(cpuBoard.board, ship4));
+    cpuBoard.placeShip(ship5, cpu.randomPlace(cpuBoard.board, ship5));
   };
 
   let shipPlacementPhase = true;
@@ -129,8 +129,7 @@ export const game = () => {
   let turnCount = 0;
 
   const cpuAttack = () => {
-    let index = cpu.randomMove();
-    playerBoard.receiveAttack(cpu.randomMove(index));
+    playerBoard.receiveAttack(cpu.randomMove(playerBoard.board));
     updateBoard(playerBoard, playerCells);
     turnCount++;
   };
@@ -143,4 +142,6 @@ export const game = () => {
   //   }
   // }
   //console.log(playerBoard.board.some((obj) => obj.isShip))
+
+  
 };

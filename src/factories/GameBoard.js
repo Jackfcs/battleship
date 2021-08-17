@@ -11,14 +11,15 @@ const GameBoard = () => {
 
   //Place new ship on board
   const placeShip = (ship, coord) => {
+
     
-    //Test if ship placement will be over border
     // for (let i = 11; i < 102; i + 10){
     //   if (coord >= i - ship.length && coord < i-1) {
     //     return
     //   }
     // }
 
+    //Test if ship placement will be over border
     if (coord >= 11 - ship.length && coord < 10) {
       return;
     }
@@ -54,7 +55,7 @@ const GameBoard = () => {
     if (board[coord + ship.length - 1].isShip || board[coord].isShip) {
       return;
     }
-    //} else {
+    
     //Create shipArray to add to board
     let shipArray = [];
     for (let i = 0; i < ship.length; i++) {
@@ -69,7 +70,7 @@ const GameBoard = () => {
     board.splice(coord, ship.length, ...shipArray);
     //Add ship to board memory
     ships.push(ship);
-    //}
+    
   };
 
   //Register hit on ship
