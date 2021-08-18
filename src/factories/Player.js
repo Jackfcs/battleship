@@ -1,35 +1,36 @@
 const Player = (name) => {
-    let turns = []
+  let turns = [];
 
-    const randomPlace = (board, ship) => {
-        
-        let num = Math.floor(Math.random() * 20);
-        if (num >= 11 - ship.length && num < 10) {
-            num = Math.floor(Math.random() * 20);
-            
-          }
-          console.log(num)
-        
+  const randomPlace = (board, ship) => {
+    let num = Math.floor(Math.random() * 100);
 
-        return num
-      
-    };
-
-    
-    
-
-    const randomMove = (array) => {
-
-        let randomSelection = array[Math.floor(Math.random() * array.length)];
-        const index = array.indexOf(randomSelection)
-        array.splice(index, 1)
-        return randomSelection
-      
-    };
-
-    return {
-        name, turns, randomMove, randomPlace
+    //Prevent ships overlapping
+    while (board[num + ship.length - 1].isShip || board[num].isShip) {
+      num = Math.floor(Math.random() * 100);
     }
-}
 
-module.exports = Player
+    //prevent ships being placed over border
+    for (let i = 1; i < 10; i++) {
+      while (num >= i * 10 + 1 - ship.length && num < i * 10) {
+        num = num - 1;
+      }
+    }
+    return num;
+  };
+
+  const randomMove = (array) => {
+    let randomSelection = array[Math.floor(Math.random() * array.length)];
+    const index = array.indexOf(randomSelection);
+    array.splice(index, 1);
+    return randomSelection;
+  };
+
+  return {
+    name,
+    turns,
+    randomMove,
+    randomPlace,
+  };
+};
+
+module.exports = Player;
