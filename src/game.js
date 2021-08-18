@@ -22,6 +22,11 @@ export const game = () => {
   const ship3 = Ship(4, 3);
   const ship4 = Ship(4, 4);
   const ship5 = Ship(5, 5);
+  //Create array for random selections
+  let selections = []
+  for (let i = 0; i < 100; i++){
+      selections.push(i);
+  }
 
   //Place ships on players board
   const placeShips = (board) => {
@@ -107,6 +112,9 @@ export const game = () => {
     cpuCells.forEach((cell) => {
       let index = cpuCells.indexOf(cell);
       cell.addEventListener("click", () => {
+        if (board.board[index].hit){
+          return
+        }
         board.receiveAttack(index);
         updateBoard(cpuBoard, cpuCells);
         //turnCount++;
@@ -129,7 +137,8 @@ export const game = () => {
   let turnCount = 0;
 
   const cpuAttack = () => {
-    playerBoard.receiveAttack(cpu.randomMove(playerBoard.board));
+    
+    playerBoard.receiveAttack(cpu.randomMove(selections));
     updateBoard(playerBoard, playerCells);
     turnCount++;
   };

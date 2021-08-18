@@ -18,14 +18,12 @@ const Player = (name) => {
     
     
 
-    const randomMove = (board) => {
-        
-        let num = Math.floor(Math.random() * 100);
-        console.log(board)
-        // if (board[num].hit) {
-        //     num = Math.floor(Math.random() * 100);
-        // }
-        return num
+    const randomMove = (array) => {
+
+        let randomSelection = array[Math.floor(Math.random() * array.length)];
+        const index = array.indexOf(randomSelection)
+        array.splice(index, 1)
+        return randomSelection
       
     };
 
