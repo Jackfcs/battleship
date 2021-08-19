@@ -22,6 +22,10 @@
     border: solid black .2px;
 }
 
+.cell:hover {
+    cursor: pointer;
+}
+
 .cell-hit{
     background-color: rgb(9, 13, 245);
 }
@@ -36,6 +40,10 @@
 
 .cell-ship-hit {
     background-color: red;
+}
+
+.cell-placing {
+    border: 5px solid black;
 }
 
 .ship{
