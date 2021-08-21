@@ -33,9 +33,6 @@ test("GameBoard can receive a ship at the given position", () => {
     expect(testBoard.board[4].isShip).toBe(true);
 });
 
-test.todo("Gameboard registers on ship sector as well as board");
-
-
 test("Gameboard can report when all ships are sunk", () => {
     testBoard.placeShip(testShip, 2)
     testBoard.receiveAttack(2)

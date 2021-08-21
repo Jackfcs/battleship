@@ -24,6 +24,7 @@ export const game = () => {
   const ship5 = Ship(5, 5);
   let currentShip = ship1;
   const orientBtn = document.getElementById("orientation");
+  let horizontal = true
   //Create array for random selections
   let selections = [];
   for (let i = 0; i < 100; i++) {
@@ -34,8 +35,10 @@ export const game = () => {
   orientBtn.addEventListener("click", () => {
     if (orientBtn.textContent === "Horizontal") {
       orientBtn.textContent = "Vertical";
+      horizontal = false
     } else {
       orientBtn.textContent = "Horizontal";
+      horizontal = true
     }
   });
 
@@ -71,7 +74,7 @@ export const game = () => {
 
       cell.addEventListener("click", () => {
         if (!board.board.some((obj) => obj.shipID)) {
-          board.placeShip(ship1, index);
+          board.placeShip(ship1, index, horizontal);
           currentShip = ship2;
           if (board.board.some((obj) => obj.shipID === 1)) {
             shipBtn1.style.display = "none";
@@ -83,7 +86,7 @@ export const game = () => {
               obj.shipID === 1 && !board.board.some((obj) => obj.shipID === 2)
           )
         ) {
-          board.placeShip(ship2, index);
+          board.placeShip(ship2, index, horizontal);
           currentShip = ship3;
           if (board.board.some((obj) => obj.shipID === 2)) {
             gameInfo.textContent = "Place your third ship";
@@ -95,7 +98,7 @@ export const game = () => {
               obj.shipID === 2 && !board.board.some((obj) => obj.shipID === 3)
           )
         ) {
-          board.placeShip(ship3, index);
+          board.placeShip(ship3, index, horizontal);
           currentShip = ship4;
           if (board.board.some((obj) => obj.shipID === 3)) {
             shipBtn3.style.display = "none";
@@ -107,7 +110,7 @@ export const game = () => {
               obj.shipID === 3 && !board.board.some((obj) => obj.shipID === 4)
           )
         ) {
-          board.placeShip(ship4, index);
+          board.placeShip(ship4, index, horizontal);
           currentShip = ship5;
           if (board.board.some((obj) => obj.shipID === 4)) {
             shipBtn4.style.display = "none";
@@ -119,7 +122,7 @@ export const game = () => {
               obj.shipID === 4 && !board.board.some((obj) => obj.shipID === 5)
           )
         ) {
-          board.placeShip(ship5, index);
+          board.placeShip(ship5, index, horizontal);
           for (let i = 0; i < currentShip.length; i++) {
             playerCells[index + i].classList.remove("cell-placing");
           }
