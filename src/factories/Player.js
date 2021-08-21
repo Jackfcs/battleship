@@ -22,6 +22,9 @@ const Player = (name) => {
     let randomSelection = array[Math.floor(Math.random() * array.length)];
     const index = array.indexOf(randomSelection);
     array.splice(index, 1);
+
+    //let randomSelection = Math.floor(Math.random() * 20);
+
     return randomSelection;
   };
 

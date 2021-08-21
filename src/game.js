@@ -22,24 +22,22 @@ export const game = () => {
   const ship3 = Ship(4, 3);
   const ship4 = Ship(4, 4);
   const ship5 = Ship(5, 5);
-  let currentShip = ship1
-  const orientBtn = document.getElementById("orientation")
+  let currentShip = ship1;
+  const orientBtn = document.getElementById("orientation");
   //Create array for random selections
-  let selections = []
-  for (let i = 0; i < 100; i++){
-      selections.push(i);
+  let selections = [];
+  for (let i = 0; i < 100; i++) {
+    selections.push(i);
   }
 
-
-  orientBtn.textContent = "Horizontal"
+  orientBtn.textContent = "Horizontal";
   orientBtn.addEventListener("click", () => {
-    if (orientBtn.textContent === "Horizontal"){
-      orientBtn.textContent = "Vertical"
+    if (orientBtn.textContent === "Horizontal") {
+      orientBtn.textContent = "Vertical";
     } else {
-      orientBtn.textContent = "Horizontal"
+      orientBtn.textContent = "Horizontal";
     }
-  })
-
+  });
 
   //Hover color change
   const gridHover = (board) => {
@@ -62,27 +60,22 @@ export const game = () => {
       });
     });
   };
-  
+
   //Place ships on players board
   const placeShips = (board) => {
     gameInfo.textContent = "Place your first ship";
     cpuBoardContainer.style.display = "none";
-    gridHover(playerBoard)
+    gridHover(playerBoard);
     playerCells.forEach((cell) => {
-
-      
-
       let index = playerCells.indexOf(cell);
 
       cell.addEventListener("click", () => {
-        
         if (!board.board.some((obj) => obj.shipID)) {
-          
           board.placeShip(ship1, index);
-          currentShip = ship2
-          if (board.board.some((obj) => obj.shipID === 1)){
-          shipBtn1.style.display = "none";
-          gameInfo.textContent = "Place your second ship";
+          currentShip = ship2;
+          if (board.board.some((obj) => obj.shipID === 1)) {
+            shipBtn1.style.display = "none";
+            gameInfo.textContent = "Place your second ship";
           }
         } else if (
           board.board.some(
@@ -90,14 +83,12 @@ export const game = () => {
               obj.shipID === 1 && !board.board.some((obj) => obj.shipID === 2)
           )
         ) {
-          
           board.placeShip(ship2, index);
-          currentShip = ship3
-          if(board.board.some((obj) => obj.shipID === 2)){
+          currentShip = ship3;
+          if (board.board.some((obj) => obj.shipID === 2)) {
             gameInfo.textContent = "Place your third ship";
-          shipBtn2.style.display = "none";
+            shipBtn2.style.display = "none";
           }
-          
         } else if (
           board.board.some(
             (obj) =>
@@ -105,10 +96,10 @@ export const game = () => {
           )
         ) {
           board.placeShip(ship3, index);
-          currentShip = ship4
-          if(board.board.some((obj) => obj.shipID === 3)){
-          shipBtn3.style.display = "none";
-          gameInfo.textContent = "Place your fourth ship";
+          currentShip = ship4;
+          if (board.board.some((obj) => obj.shipID === 3)) {
+            shipBtn3.style.display = "none";
+            gameInfo.textContent = "Place your fourth ship";
           }
         } else if (
           board.board.some(
@@ -117,10 +108,10 @@ export const game = () => {
           )
         ) {
           board.placeShip(ship4, index);
-          currentShip = ship5
-          if(board.board.some((obj) => obj.shipID === 4)){
-          shipBtn4.style.display = "none";
-          gameInfo.textContent = "Place your final ship";
+          currentShip = ship5;
+          if (board.board.some((obj) => obj.shipID === 4)) {
+            shipBtn4.style.display = "none";
+            gameInfo.textContent = "Place your final ship";
           }
         } else if (
           board.board.some(
@@ -128,21 +119,21 @@ export const game = () => {
               obj.shipID === 4 && !board.board.some((obj) => obj.shipID === 5)
           )
         ) {
-          
           board.placeShip(ship5, index);
           for (let i = 0; i < currentShip.length; i++) {
             playerCells[index + i].classList.remove("cell-placing");
           }
-          currentShip = false
-          
-          if(board.board.some((obj) => obj.shipID === 5)){
+          currentShip = false;
+
+          if (board.board.some((obj) => obj.shipID === 5)) {
             cpuPlace();
-          shipBtn5.style.display = "none";
-          gameInfo.textContent = "Attack Enemy Board";
-          
-          cpuBoardContainer.style.display = "grid";
+
+            shipBtn5.style.display = "none";
+            gameInfo.textContent = "Attack Enemy Board";
+
+            cpuBoardContainer.style.display = "grid";
           }
-          
+
           shipPlacementPhase = false;
         }
         updateBoard(board, playerCells);
@@ -153,6 +144,22 @@ export const game = () => {
   placeShips(playerBoard);
 
   const updateBoard = (board, cells) => {
+    let ship1 = board.board.filter(function (obj) {
+      return obj.shipID === 1 && obj.hit;
+    });
+    let ship2 = board.board.filter(function (obj) {
+      return obj.shipID === 2 && obj.hit;
+    });
+    let ship3 = board.board.filter(function (obj) {
+      return obj.shipID === 3 && obj.hit;
+    });
+    let ship4 = board.board.filter(function (obj) {
+      return obj.shipID === 4 && obj.hit;
+    });
+    let ship5 = board.board.filter(function (obj) {
+      return obj.shipID === 5 && obj.hit;
+    });
+
     for (let i = 0; i < 100; i++) {
       if (
         board.board[i].isShip &&
@@ -168,6 +175,27 @@ export const game = () => {
         cells[i].classList.remove("cell-not-hit");
         cells[i].classList.add("cell-hit");
       }
+
+      
+      if (ship1.length === 2 && board.board[i].shipID === 1){
+        cells[i].classList.add("ship-destroyed");
+      }
+      if (ship2.length === 3 && board.board[i].shipID === 2){
+        cells[i].classList.add("ship-destroyed");
+      }
+      if (ship3.length === 4 && board.board[i].shipID === 3){
+        cells[i].classList.add("ship-destroyed");
+      }
+      if (ship4.length === 4 && board.board[i].shipID === 4){
+        cells[i].classList.add("ship-destroyed");
+      }
+      if (ship5.length === 5 && board.board[i].shipID === 5){
+        cells[i].classList.add("ship-destroyed");
+      }
+
+
+
+
     }
   };
 
@@ -176,18 +204,16 @@ export const game = () => {
     cpuCells.forEach((cell) => {
       let index = cpuCells.indexOf(cell);
       cell.addEventListener("click", () => {
-        if (board.board[index].hit){
-          return
+        if (board.board[index].hit) {
+          return;
         }
         board.receiveAttack(index);
         updateBoard(cpuBoard, cpuCells);
-        console.log(board.ships)
-        console.log(board)
         cpuAttack();
-        if (!cpuBoard.shipsRemain()){
-          alert("You win")
-        } else if (!playerBoard.shipsRemain()){
-          alert("You lose!")
+        if (!cpuBoard.shipsRemain()) {
+          alert("You win");
+        } else if (!playerBoard.shipsRemain()) {
+          alert("You lose!");
         }
       });
     });
@@ -206,7 +232,6 @@ export const game = () => {
   let turnCount = 0;
 
   const cpuAttack = () => {
-    
     playerBoard.receiveAttack(cpu.randomMove(selections));
     updateBoard(playerBoard, playerCells);
     turnCount++;
@@ -220,6 +245,4 @@ export const game = () => {
   //   }
   // }
   //console.log(playerBoard.board.some((obj) => obj.isShip))
-
-  
 };

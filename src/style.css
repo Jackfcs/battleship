@@ -58,3 +58,7 @@
     background-color: grey;
 }
 
+.ship-destroyed{
+    background-color: rgb(255, 123, 0);
+}
+
