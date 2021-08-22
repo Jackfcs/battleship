@@ -23,11 +23,31 @@ const GameBoard = () => {
       });
     }
 
-    if (horizontal === false) {
-      console.log('hi')
-      for (let i = 0; i < ship.length; i++){
-        board.splice(coord + i*10, 1, shipArray[i])
+    //Tests for vertical placement 
+    if (!horizontal) {
+      //If ship placement will be over border
+      if (coord > 109 - ship.length * 10){
+        return
       }
+
+      //If ship overlaps other ships
+      for (let i = 0; i < ship.length; i++){
+        
+        if (board[coord + (i * 10)].isShip || board[coord].isShip) {
+                return;
+              }
+        
+      }
+      
+      
+
+      //If checks have passed, place ship
+      for (let i = 0; i < ship.length; i++){
+        
+
+        board.splice(coord + i * 10, 1, shipArray[i])
+      }
+      
     }
 
     //Test if ship placement will be over border

@@ -24,7 +24,7 @@ export const game = () => {
   const ship5 = Ship(5, 5);
   let currentShip = ship1;
   const orientBtn = document.getElementById("orientation");
-  let horizontal = true
+  let horizontal = true;
   //Create array for random selections
   let selections = [];
   for (let i = 0; i < 100; i++) {
@@ -35,48 +35,71 @@ export const game = () => {
   orientBtn.addEventListener("click", () => {
     if (orientBtn.textContent === "Horizontal") {
       orientBtn.textContent = "Vertical";
-      horizontal = false
-    } else {
+      horizontal = false;
+    } else if (orientBtn.textContent === "Vertical") {
       orientBtn.textContent = "Horizontal";
-      horizontal = true
+      horizontal = true;
     }
   });
 
   //Hover color change
-  const gridHover = (board) => {
-    playerCells.forEach((cell) => {
-      if (board.board.some((obj) => obj.shipID === 1)) {
-        currentShip = ship1;
-      }
 
-      cell.addEventListener("mouseenter", () => {
-        let index = playerCells.indexOf(cell);
-        for (let i = 0; i < currentShip.length; i++) {
-          playerCells[index + i].classList.add("cell-placing");
+  playerCells.forEach((cell) => {
+    if (playerBoard.board.some((obj) => obj.shipID === 1)) {
+      currentShip = ship1;
+    }
+
+    cell.addEventListener("mouseenter", () => {
+      let index = playerCells.indexOf(cell);
+      for (let i = 0; i < currentShip.length; i++) {
+        if (horizontal === false) {
+          try {
+            playerCells[index + i * 10].classList.add("cell-placing");
+          } catch (e) {
+            return;
+          }
+        } else if (horizontal) {
+          try {
+            playerCells[index + i].classList.add("cell-placing");
+          } catch (e) {
+            return;
+          }
         }
-      });
-      cell.addEventListener("mouseleave", () => {
-        let index = playerCells.indexOf(cell);
-        for (let i = 0; i < currentShip.length; i++) {
-          playerCells[index + i].classList.remove("cell-placing");
-        }
-      });
+      }
     });
-  };
+    cell.addEventListener("mouseleave", () => {
+      let index = playerCells.indexOf(cell);
+      for (let i = 0; i < currentShip.length; i++) {
+        if (horizontal === false) {
+          try {
+            playerCells[index + i * 10].classList.remove("cell-placing");
+          } catch (e) {
+            return;
+          }
+        } else if (horizontal) {
+          try {
+            playerCells[index + i].classList.remove("cell-placing");
+          } catch (e) {
+            return;
+          }
+        }
+      }
+    });
+  });
 
   //Place ships on players board
   const placeShips = (board) => {
     gameInfo.textContent = "Place your first ship";
     cpuBoardContainer.style.display = "none";
-    gridHover(playerBoard);
     playerCells.forEach((cell) => {
       let index = playerCells.indexOf(cell);
 
       cell.addEventListener("click", () => {
         if (!board.board.some((obj) => obj.shipID)) {
           board.placeShip(ship1, index, horizontal);
-          currentShip = ship2;
+          
           if (board.board.some((obj) => obj.shipID === 1)) {
+            currentShip = ship2;
             shipBtn1.style.display = "none";
             gameInfo.textContent = "Place your second ship";
           }
@@ -87,8 +110,9 @@ export const game = () => {
           )
         ) {
           board.placeShip(ship2, index, horizontal);
-          currentShip = ship3;
+          
           if (board.board.some((obj) => obj.shipID === 2)) {
+            currentShip = ship3;
             gameInfo.textContent = "Place your third ship";
             shipBtn2.style.display = "none";
           }
@@ -99,8 +123,9 @@ export const game = () => {
           )
         ) {
           board.placeShip(ship3, index, horizontal);
-          currentShip = ship4;
+          
           if (board.board.some((obj) => obj.shipID === 3)) {
+            currentShip = ship4;
             shipBtn3.style.display = "none";
             gameInfo.textContent = "Place your fourth ship";
           }
@@ -111,8 +136,9 @@ export const game = () => {
           )
         ) {
           board.placeShip(ship4, index, horizontal);
-          currentShip = ship5;
+          
           if (board.board.some((obj) => obj.shipID === 4)) {
+            currentShip = ship5;
             shipBtn4.style.display = "none";
             gameInfo.textContent = "Place your final ship";
           }
@@ -123,21 +149,22 @@ export const game = () => {
           )
         ) {
           board.placeShip(ship5, index, horizontal);
-          for (let i = 0; i < currentShip.length; i++) {
-            playerCells[index + i].classList.remove("cell-placing");
+
+          //Remove hover class
+          for (let i = 0; i < 100; i++) {
+            playerCells[i].classList.remove("cell-placing");
           }
-          currentShip = false;
 
+          //Actions for after 5th boat placed
           if (board.board.some((obj) => obj.shipID === 5)) {
+            //horizontal = true;
             cpuPlace();
-
+            currentShip = false;
             shipBtn5.style.display = "none";
             gameInfo.textContent = "Attack Enemy Board";
 
             cpuBoardContainer.style.display = "grid";
           }
-
-          shipPlacementPhase = false;
         }
         updateBoard(board, playerCells);
       });
@@ -179,26 +206,21 @@ export const game = () => {
         cells[i].classList.add("cell-hit");
       }
 
-      
-      if (ship1.length === 2 && board.board[i].shipID === 1){
+      if (ship1.length === 2 && board.board[i].shipID === 1) {
         cells[i].classList.add("ship-destroyed");
       }
-      if (ship2.length === 3 && board.board[i].shipID === 2){
+      if (ship2.length === 3 && board.board[i].shipID === 2) {
         cells[i].classList.add("ship-destroyed");
       }
-      if (ship3.length === 4 && board.board[i].shipID === 3){
+      if (ship3.length === 4 && board.board[i].shipID === 3) {
         cells[i].classList.add("ship-destroyed");
       }
-      if (ship4.length === 4 && board.board[i].shipID === 4){
+      if (ship4.length === 4 && board.board[i].shipID === 4) {
         cells[i].classList.add("ship-destroyed");
       }
-      if (ship5.length === 5 && board.board[i].shipID === 5){
+      if (ship5.length === 5 && board.board[i].shipID === 5) {
         cells[i].classList.add("ship-destroyed");
       }
-
-
-
-
     }
   };
 
@@ -223,11 +245,11 @@ export const game = () => {
   };
 
   const cpuPlace = () => {
-    cpuBoard.placeShip(ship1, cpu.randomPlace(cpuBoard.board, ship1));
-    cpuBoard.placeShip(ship2, cpu.randomPlace(cpuBoard.board, ship2));
-    cpuBoard.placeShip(ship3, cpu.randomPlace(cpuBoard.board, ship3));
-    cpuBoard.placeShip(ship4, cpu.randomPlace(cpuBoard.board, ship4));
-    cpuBoard.placeShip(ship5, cpu.randomPlace(cpuBoard.board, ship5));
+    cpuBoard.placeShip(ship1, cpu.randomPlace(cpuBoard.board, ship1, horizontal), horizontal);
+    cpuBoard.placeShip(ship2, cpu.randomPlace(cpuBoard.board, ship2, !horizontal), !horizontal);
+    cpuBoard.placeShip(ship3, cpu.randomPlace(cpuBoard.board, ship3, horizontal), horizontal);
+    cpuBoard.placeShip(ship4, cpu.randomPlace(cpuBoard.board, ship4, !horizontal), !horizontal);
+    cpuBoard.placeShip(ship5, cpu.randomPlace(cpuBoard.board, ship5, horizontal), horizontal);
   };
 
   let shipPlacementPhase = true;
