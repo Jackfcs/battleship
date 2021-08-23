@@ -25,6 +25,9 @@ export const game = () => {
   let currentShip = ship1;
   const orientBtn = document.getElementById("orientation");
   let horizontal = true;
+  const legend = document.getElementById("legend");
+  const restart = document.getElementById("restart");
+  legend.style.display = "none";
   //Create array for random selections
   let selections = [];
   for (let i = 0; i < 100; i++) {
@@ -159,6 +162,8 @@ export const game = () => {
           if (board.board.some((obj) => obj.shipID === 5)) {
             //horizontal = true;
             cpuPlace();
+            orientBtn.style.display = "none";
+            legend.style.display = "flex";
             currentShip = false;
             shipBtn5.style.display = "none";
             gameInfo.textContent = "Attack Enemy Board";
@@ -171,7 +176,7 @@ export const game = () => {
     });
   };
 
-  placeShips(playerBoard);
+  
 
   const updateBoard = (board, cells) => {
     let ship1 = board.board.filter(function (obj) {
@@ -262,7 +267,13 @@ export const game = () => {
     turnCount++;
   };
 
+  placeShips(playerBoard);
   hitBoard(cpuBoard);
+
+  
+restart.addEventListener('click', () => {
+    location.reload(true)
+  })
 
   // const declareWinner = () => {
   //   if (playerBoard.board.some((obj) => obj.isShip && !playerBoard.board.some((obj) => obj.hit === false))) {

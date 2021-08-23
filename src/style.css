@@ -1,25 +1,42 @@
+body {
+    background-color: rgb(242, 244, 255);
+}
+
+.info-cont {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+#game-info {
+    border: solid rgb(58, 58, 58) 1px;
+    text-align: center;
+    padding: 10px;
+    border-radius: 5px;
+    width: 30%;
+    color: rgb(58, 58, 58)
+}
+
 .boards{
     display: flex;
     flex-direction: row;
     justify-content: space-around;
 }
 
-#player-board{
+.board{
     display: grid;
     grid-template-rows: repeat(10, 30px);
     grid-template-columns: repeat(10, 30px);
-
-}
-
-#cpu-board{
-    display: grid;
-    grid-template-rows: repeat(10, 30px);
-    grid-template-columns: repeat(10, 30px);
-
 }
 
 .cell {
-    border: solid black .2px;
+    border: solid rgb(97, 97, 97) .1px;
+    margin: 1px;
+}
+
+.cell-legend {
+    width: 30px;
+    height: 30px;
 }
 
 .cell:hover {
@@ -27,11 +44,11 @@
 }
 
 .cell-hit{
-    background-color: rgb(9, 13, 245);
+    background-color: rgb(87, 160, 255);
 }
 
 .cell-not-hit {
-    background-color: aqua;
+    background-color: rgb(208, 255, 255);
 }
 
 .cell-ship {
@@ -39,11 +56,15 @@
 }
 
 .cell-ship-hit {
-    background-color: red;
+    background-color: rgb(255, 86, 86);
+}
+
+.ship-destroyed{
+    background-color: rgb(255, 169, 88);
 }
 
 .cell-placing {
-    border: 5px solid black;
+    border: 2px solid black;
 }
 
 .ship{
@@ -58,7 +79,48 @@
     background-color: grey;
 }
 
-.ship-destroyed{
-    background-color: rgb(255, 123, 0);
+#orientation {
+    border: none;
+    border-radius: 5px;
+    background-color: rgb(202, 202, 202);
+    color: rgb(71, 71, 71);
+    padding: 10px;
+    width: 100px;
+    position: relative;
+    top: 270px;
+    left: 10px;
 }
 
+#orientation:hover {
+    cursor: pointer;
+}
+
+#legend {
+    display: flex;
+    flex-direction: column;
+}
+
+.legend-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+
+
+.right {
+    align-self: left;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    bottom: 30px;
+}
+
+.below {
+    display: flex;
+    flex-direction: row;
+    padding-top: 40px;
+    justify-content: flex-end;
+    position: relative;
+    right: 100px;
+}

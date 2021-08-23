@@ -3,15 +3,18 @@
   <head>
     <meta charset="utf-8" />
 
-   <title>Getting Started</title>
+    <title>Getting Started</title>
 
-   <title>Asset Management</title>
+    <title>Asset Management</title>
   </head>
   <body>
-    <h1>Battleship</h1>
-    <h3 id="game-info"></h3>
+    <!-- <h1>Battleship</h1> -->
+    <div class="info-cont">
+    <h2 id="game-info"></h2>
+  </div>
+    <button id="restart">restart</button>
     <div class="boards">
-      <div id="player-board">
+      <div class="board" id="player-board">
         <div class="cell player-cell cell-not-hit"></div>
         <div class="cell player-cell cell-not-hit"></div>
         <div class="cell player-cell cell-not-hit"></div>
@@ -113,142 +116,162 @@
         <div class="cell player-cell cell-not-hit"></div>
         <div class="cell player-cell cell-not-hit"></div>
       </div>
-      <div id="cpu-board">
-        <div class="cell cpu-cell cell-not-hit"></div>
-        <div class="cell cpu-cell cell-not-hit"></div>
-        <div class="cell cpu-cell cell-not-hit"></div>
-        <div class="cell cpu-cell cell-not-hit"></div>
-        <div class="cell cpu-cell cell-not-hit"></div>
-        <div class="cell cpu-cell cell-not-hit"></div>
-        <div class="cell cpu-cell cell-not-hit"></div>
-        <div class="cell cpu-cell cell-not-hit"></div>
-        <div class="cell cpu-cell cell-not-hit"></div>
-        <div class="cell cpu-cell cell-not-hit"></div>
-        <div class="cell cpu-cell cell-not-hit"></div>
-        <div class="cell cpu-cell cell-not-hit"></div>
-        <div class="cell cpu-cell cell-not-hit"></div>
-        <div class="cell cpu-cell cell-not-hit"></div>
-        <div class="cell cpu-cell cell-not-hit"></div>
-        <div class="cell cpu-cell cell-not-hit"></div>
-        <div class="cell cpu-cell cell-not-hit"></div>
-        <div class="cell cpu-cell cell-not-hit"></div>
-        <div class="cell cpu-cell cell-not-hit"></div>
-        <div class="cell cpu-cell cell-not-hit"></div>
-        <div class="cell cpu-cell cell-not-hit"></div>
-        <div class="cell cpu-cell cell-not-hit"></div>
-        <div class="cell cpu-cell cell-not-hit"></div>
-        <div class="cell cpu-cell cell-not-hit"></div>
-        <div class="cell cpu-cell cell-not-hit"></div>
-        <div class="cell cpu-cell cell-not-hit"></div>
-        <div class="cell cpu-cell cell-not-hit"></div>
-        <div class="cell cpu-cell cell-not-hit"></div>
-        <div class="cell cpu-cell cell-not-hit"></div>
-        <div class="cell cpu-cell cell-not-hit"></div>
-        <div class="cell cpu-cell cell-not-hit"></div>
-        <div class="cell cpu-cell cell-not-hit"></div>
-        <div class="cell cpu-cell cell-not-hit"></div>
-        <div class="cell cpu-cell cell-not-hit"></div>
-        <div class="cell cpu-cell cell-not-hit"></div>
-        <div class="cell cpu-cell cell-not-hit"></div>
-        <div class="cell cpu-cell cell-not-hit"></div>
-        <div class="cell cpu-cell cell-not-hit"></div>
-        <div class="cell cpu-cell cell-not-hit"></div>
-        <div class="cell cpu-cell cell-not-hit"></div>
-        <div class="cell cpu-cell cell-not-hit"></div>
-        <div class="cell cpu-cell cell-not-hit"></div>
-        <div class="cell cpu-cell cell-not-hit"></div>
-        <div class="cell cpu-cell cell-not-hit"></div>
-        <div class="cell cpu-cell cell-not-hit"></div>
-        <div class="cell cpu-cell cell-not-hit"></div>
-        <div class="cell cpu-cell cell-not-hit"></div>
-        <div class="cell cpu-cell cell-not-hit"></div>
-        <div class="cell cpu-cell cell-not-hit"></div>
-        <div class="cell cpu-cell cell-not-hit"></div>
-        <div class="cell cpu-cell cell-not-hit"></div>
-        <div class="cell cpu-cell cell-not-hit"></div>
-        <div class="cell cpu-cell cell-not-hit"></div>
-        <div class="cell cpu-cell cell-not-hit"></div>
-        <div class="cell cpu-cell cell-not-hit"></div>
-        <div class="cell cpu-cell cell-not-hit"></div>
-        <div class="cell cpu-cell cell-not-hit"></div>
-        <div class="cell cpu-cell cell-not-hit"></div>
-        <div class="cell cpu-cell cell-not-hit"></div>
-        <div class="cell cpu-cell cell-not-hit"></div>
-        <div class="cell cpu-cell cell-not-hit"></div>
-        <div class="cell cpu-cell cell-not-hit"></div>
-        <div class="cell cpu-cell cell-not-hit"></div>
-        <div class="cell cpu-cell cell-not-hit"></div>
-        <div class="cell cpu-cell cell-not-hit"></div>
-        <div class="cell cpu-cell cell-not-hit"></div>
-        <div class="cell cpu-cell cell-not-hit"></div>
-        <div class="cell cpu-cell cell-not-hit"></div>
-        <div class="cell cpu-cell cell-not-hit"></div>
-        <div class="cell cpu-cell cell-not-hit"></div>
-        <div class="cell cpu-cell cell-not-hit"></div>
-        <div class="cell cpu-cell cell-not-hit"></div>
-        <div class="cell cpu-cell cell-not-hit"></div>
-        <div class="cell cpu-cell cell-not-hit"></div>
-        <div class="cell cpu-cell cell-not-hit"></div>
-        <div class="cell cpu-cell cell-not-hit"></div>
-        <div class="cell cpu-cell cell-not-hit"></div>
-        <div class="cell cpu-cell cell-not-hit"></div>
-        <div class="cell cpu-cell cell-not-hit"></div>
-        <div class="cell cpu-cell cell-not-hit"></div>
-        <div class="cell cpu-cell cell-not-hit"></div>
-        <div class="cell cpu-cell cell-not-hit"></div>
-        <div class="cell cpu-cell cell-not-hit"></div>
-        <div class="cell cpu-cell cell-not-hit"></div>
-        <div class="cell cpu-cell cell-not-hit"></div>
-        <div class="cell cpu-cell cell-not-hit"></div>
-        <div class="cell cpu-cell cell-not-hit"></div>
-        <div class="cell cpu-cell cell-not-hit"></div>
-        <div class="cell cpu-cell cell-not-hit"></div>
-        <div class="cell cpu-cell cell-not-hit"></div>
-        <div class="cell cpu-cell cell-not-hit"></div>
-        <div class="cell cpu-cell cell-not-hit"></div>
-        <div class="cell cpu-cell cell-not-hit"></div>
-        <div class="cell cpu-cell cell-not-hit"></div>
-        <div class="cell cpu-cell cell-not-hit"></div>
-        <div class="cell cpu-cell cell-not-hit"></div>
-        <div class="cell cpu-cell cell-not-hit"></div>
-        <div class="cell cpu-cell cell-not-hit"></div>
-        <div class="cell cpu-cell cell-not-hit"></div>
-        <div class="cell cpu-cell cell-not-hit"></div>
-      
+      <div class="right">
+        <div><button id="orientation"></button></div>
+        <div id="ships">
+          <div class="ship" id="ship1">
+            <div class="cell ship-cell"></div>
+            <div class="cell ship-cell"></div>
+          </div>
+          <div class="ship" id="ship2">
+            <div class="cell ship-cell"></div>
+            <div class="cell ship-cell"></div>
+            <div class="cell ship-cell"></div>
+          </div>
+          <div class="ship" id="ship3">
+            <div class="cell ship-cell"></div>
+            <div class="cell ship-cell"></div>
+            <div class="cell ship-cell"></div>
+            <div class="cell ship-cell"></div>
+          </div>
+          <div class="ship" id="ship4">
+            <div class="cell ship-cell"></div>
+            <div class="cell ship-cell"></div>
+            <div class="cell ship-cell"></div>
+            <div class="cell ship-cell"></div>
+          </div>
+          <div class="ship" id="ship5">
+            <div class="cell ship-cell"></div>
+            <div class="cell ship-cell"></div>
+            <div class="cell ship-cell"></div>
+            <div class="cell ship-cell"></div>
+            <div class="cell ship-cell"></div>
+          </div>
+        </div>
         
       </div>
-  </div>
-  <div id="ships">
-    <div class="ship" id="ship1">
-      <div class="cell ship-cell"></div>
-      <div class="cell ship-cell"></div>
+      <div class="board" id="cpu-board">
+        <div class="cell cpu-cell cell-not-hit"></div>
+        <div class="cell cpu-cell cell-not-hit"></div>
+        <div class="cell cpu-cell cell-not-hit"></div>
+        <div class="cell cpu-cell cell-not-hit"></div>
+        <div class="cell cpu-cell cell-not-hit"></div>
+        <div class="cell cpu-cell cell-not-hit"></div>
+        <div class="cell cpu-cell cell-not-hit"></div>
+        <div class="cell cpu-cell cell-not-hit"></div>
+        <div class="cell cpu-cell cell-not-hit"></div>
+        <div class="cell cpu-cell cell-not-hit"></div>
+        <div class="cell cpu-cell cell-not-hit"></div>
+        <div class="cell cpu-cell cell-not-hit"></div>
+        <div class="cell cpu-cell cell-not-hit"></div>
+        <div class="cell cpu-cell cell-not-hit"></div>
+        <div class="cell cpu-cell cell-not-hit"></div>
+        <div class="cell cpu-cell cell-not-hit"></div>
+        <div class="cell cpu-cell cell-not-hit"></div>
+        <div class="cell cpu-cell cell-not-hit"></div>
+        <div class="cell cpu-cell cell-not-hit"></div>
+        <div class="cell cpu-cell cell-not-hit"></div>
+        <div class="cell cpu-cell cell-not-hit"></div>
+        <div class="cell cpu-cell cell-not-hit"></div>
+        <div class="cell cpu-cell cell-not-hit"></div>
+        <div class="cell cpu-cell cell-not-hit"></div>
+        <div class="cell cpu-cell cell-not-hit"></div>
+        <div class="cell cpu-cell cell-not-hit"></div>
+        <div class="cell cpu-cell cell-not-hit"></div>
+        <div class="cell cpu-cell cell-not-hit"></div>
+        <div class="cell cpu-cell cell-not-hit"></div>
+        <div class="cell cpu-cell cell-not-hit"></div>
+        <div class="cell cpu-cell cell-not-hit"></div>
+        <div class="cell cpu-cell cell-not-hit"></div>
+        <div class="cell cpu-cell cell-not-hit"></div>
+        <div class="cell cpu-cell cell-not-hit"></div>
+        <div class="cell cpu-cell cell-not-hit"></div>
+        <div class="cell cpu-cell cell-not-hit"></div>
+        <div class="cell cpu-cell cell-not-hit"></div>
+        <div class="cell cpu-cell cell-not-hit"></div>
+        <div class="cell cpu-cell cell-not-hit"></div>
+        <div class="cell cpu-cell cell-not-hit"></div>
+        <div class="cell cpu-cell cell-not-hit"></div>
+        <div class="cell cpu-cell cell-not-hit"></div>
+        <div class="cell cpu-cell cell-not-hit"></div>
+        <div class="cell cpu-cell cell-not-hit"></div>
+        <div class="cell cpu-cell cell-not-hit"></div>
+        <div class="cell cpu-cell cell-not-hit"></div>
+        <div class="cell cpu-cell cell-not-hit"></div>
+        <div class="cell cpu-cell cell-not-hit"></div>
+        <div class="cell cpu-cell cell-not-hit"></div>
+        <div class="cell cpu-cell cell-not-hit"></div>
+        <div class="cell cpu-cell cell-not-hit"></div>
+        <div class="cell cpu-cell cell-not-hit"></div>
+        <div class="cell cpu-cell cell-not-hit"></div>
+        <div class="cell cpu-cell cell-not-hit"></div>
+        <div class="cell cpu-cell cell-not-hit"></div>
+        <div class="cell cpu-cell cell-not-hit"></div>
+        <div class="cell cpu-cell cell-not-hit"></div>
+        <div class="cell cpu-cell cell-not-hit"></div>
+        <div class="cell cpu-cell cell-not-hit"></div>
+        <div class="cell cpu-cell cell-not-hit"></div>
+        <div class="cell cpu-cell cell-not-hit"></div>
+        <div class="cell cpu-cell cell-not-hit"></div>
+        <div class="cell cpu-cell cell-not-hit"></div>
+        <div class="cell cpu-cell cell-not-hit"></div>
+        <div class="cell cpu-cell cell-not-hit"></div>
+        <div class="cell cpu-cell cell-not-hit"></div>
+        <div class="cell cpu-cell cell-not-hit"></div>
+        <div class="cell cpu-cell cell-not-hit"></div>
+        <div class="cell cpu-cell cell-not-hit"></div>
+        <div class="cell cpu-cell cell-not-hit"></div>
+        <div class="cell cpu-cell cell-not-hit"></div>
+        <div class="cell cpu-cell cell-not-hit"></div>
+        <div class="cell cpu-cell cell-not-hit"></div>
+        <div class="cell cpu-cell cell-not-hit"></div>
+        <div class="cell cpu-cell cell-not-hit"></div>
+        <div class="cell cpu-cell cell-not-hit"></div>
+        <div class="cell cpu-cell cell-not-hit"></div>
+        <div class="cell cpu-cell cell-not-hit"></div>
+        <div class="cell cpu-cell cell-not-hit"></div>
+        <div class="cell cpu-cell cell-not-hit"></div>
+        <div class="cell cpu-cell cell-not-hit"></div>
+        <div class="cell cpu-cell cell-not-hit"></div>
+        <div class="cell cpu-cell cell-not-hit"></div>
+        <div class="cell cpu-cell cell-not-hit"></div>
+        <div class="cell cpu-cell cell-not-hit"></div>
+        <div class="cell cpu-cell cell-not-hit"></div>
+        <div class="cell cpu-cell cell-not-hit"></div>
+        <div class="cell cpu-cell cell-not-hit"></div>
+        <div class="cell cpu-cell cell-not-hit"></div>
+        <div class="cell cpu-cell cell-not-hit"></div>
+        <div class="cell cpu-cell cell-not-hit"></div>
+        <div class="cell cpu-cell cell-not-hit"></div>
+        <div class="cell cpu-cell cell-not-hit"></div>
+        <div class="cell cpu-cell cell-not-hit"></div>
+        <div class="cell cpu-cell cell-not-hit"></div>
+        <div class="cell cpu-cell cell-not-hit"></div>
+        <div class="cell cpu-cell cell-not-hit"></div>
+        <div class="cell cpu-cell cell-not-hit"></div>
+        <div class="cell cpu-cell cell-not-hit"></div>
+        <div class="cell cpu-cell cell-not-hit"></div>
+      </div>
     </div>
-    <div class="ship" id="ship2">
-      <div class="cell ship-cell"></div>
-      <div class="cell ship-cell"></div>
-      <div class="cell ship-cell"></div>
+    <div class="below">
+   
+
+    <div id="legend">
+      <div id="legend">Legend</div>
+      <div class="legend-row">
+        <div class="cell cell-legend cell-hit"></div>
+        <div>Miss</div>
+      </div>
+      <div class="legend-row">
+        <div class="cell cell-legend cell-ship-hit"></div>
+        <div>Hit</div>
+      </div>
+      <div class="legend-row">
+        <div class="cell cell-legend ship-destroyed"></div>
+        <div>Ship Sunk</div>
+      </div>
     </div>
-    <div class="ship" id="ship3">
-      <div class="cell ship-cell"></div>
-      <div class="cell ship-cell"></div>
-      <div class="cell ship-cell"></div>
-      <div class="cell ship-cell"></div>
     </div>
-    <div class="ship" id="ship4">
-      <div class="cell ship-cell"></div>
-      <div class="cell ship-cell"></div>
-      <div class="cell ship-cell"></div>
-      <div class="cell ship-cell"></div>
-    </div>
-    <div class="ship" id="ship5">
-      <div class="cell ship-cell"></div>
-      <div class="cell ship-cell"></div>
-      <div class="cell ship-cell"></div>
-      <div class="cell ship-cell"></div>
-      <div class="cell ship-cell"></div>
-    </div>
-  </div>
-  <div><button id="orientation"></button></div>
-   <script src="main.js"></script>
+    <script src="main.js"></script>
   </body>
 </html>
