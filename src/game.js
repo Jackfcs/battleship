@@ -7,7 +7,6 @@ export const game = () => {
   let cpuBoard = GameBoard();
   let player = Player("player");
   let cpu = Player("CPU");
-  const playerBoardContainer = document.getElementById("player-board");
   const cpuBoardContainer = document.getElementById("cpu-board");
   let cpuCells = Array.from(document.querySelectorAll(".cpu-cell"));
   let playerCells = Array.from(document.querySelectorAll(".player-cell"));
@@ -27,6 +26,10 @@ export const game = () => {
   let horizontal = true;
   const legend = document.getElementById("legend");
   const restart = document.getElementById("restart");
+  const right = document.querySelector(".right");
+  const winScreen = document.getElementById("win-screen");
+  const endText = document.getElementById("winner");
+  const bg = document.getElementById("bg");
   legend.style.display = "none";
   //Create array for random selections
   let selections = [];
@@ -36,12 +39,12 @@ export const game = () => {
 
   orientBtn.textContent = "Horizontal";
   orientBtn.addEventListener("click", () => {
-    if (orientBtn.textContent === "Horizontal") {
-      orientBtn.textContent = "Vertical";
-      horizontal = false;
-    } else if (orientBtn.textContent === "Vertical") {
+    if (orientBtn.textContent === "Vertical") {
       orientBtn.textContent = "Horizontal";
       horizontal = true;
+    } else if (orientBtn.textContent === "Horizontal") {
+      orientBtn.textContent = "Vertical";
+      horizontal = false;
     }
   });
 
@@ -100,7 +103,7 @@ export const game = () => {
       cell.addEventListener("click", () => {
         if (!board.board.some((obj) => obj.shipID)) {
           board.placeShip(ship1, index, horizontal);
-          
+
           if (board.board.some((obj) => obj.shipID === 1)) {
             currentShip = ship2;
             shipBtn1.style.display = "none";
@@ -113,7 +116,7 @@ export const game = () => {
           )
         ) {
           board.placeShip(ship2, index, horizontal);
-          
+
           if (board.board.some((obj) => obj.shipID === 2)) {
             currentShip = ship3;
             gameInfo.textContent = "Place your third ship";
@@ -126,7 +129,7 @@ export const game = () => {
           )
         ) {
           board.placeShip(ship3, index, horizontal);
-          
+
           if (board.board.some((obj) => obj.shipID === 3)) {
             currentShip = ship4;
             shipBtn3.style.display = "none";
@@ -139,7 +142,7 @@ export const game = () => {
           )
         ) {
           board.placeShip(ship4, index, horizontal);
-          
+
           if (board.board.some((obj) => obj.shipID === 4)) {
             currentShip = ship5;
             shipBtn4.style.display = "none";
@@ -160,9 +163,8 @@ export const game = () => {
 
           //Actions for after 5th boat placed
           if (board.board.some((obj) => obj.shipID === 5)) {
-            //horizontal = true;
             cpuPlace();
-            orientBtn.style.display = "none";
+            right.style.display = "none";
             legend.style.display = "flex";
             currentShip = false;
             shipBtn5.style.display = "none";
@@ -175,8 +177,6 @@ export const game = () => {
       });
     });
   };
-
-  
 
   const updateBoard = (board, cells) => {
     let ship1 = board.board.filter(function (obj) {
@@ -241,25 +241,51 @@ export const game = () => {
         updateBoard(cpuBoard, cpuCells);
         cpuAttack();
         if (!cpuBoard.shipsRemain()) {
-          alert("You win");
+          displayEndScreen()
+          endText.textContent = "You Win!"
         } else if (!playerBoard.shipsRemain()) {
-          alert("You lose!");
+          displayEndScreen()
+          endText.textContent = "You Lose!"
         }
       });
     });
   };
 
-  const cpuPlace = () => {
-    cpuBoard.placeShip(ship1, cpu.randomPlace(cpuBoard.board, ship1, horizontal), horizontal);
-    cpuBoard.placeShip(ship2, cpu.randomPlace(cpuBoard.board, ship2, !horizontal), !horizontal);
-    cpuBoard.placeShip(ship3, cpu.randomPlace(cpuBoard.board, ship3, horizontal), horizontal);
-    cpuBoard.placeShip(ship4, cpu.randomPlace(cpuBoard.board, ship4, !horizontal), !horizontal);
-    cpuBoard.placeShip(ship5, cpu.randomPlace(cpuBoard.board, ship5, horizontal), horizontal);
+
+  const displayEndScreen = () => {
+    winScreen.style.display = "flex";
+    bg.style.display = "block";
+    console.log('hi')
   };
 
-  let shipPlacementPhase = true;
+  const cpuPlace = () => {
+    cpuBoard.placeShip(
+      ship1,
+      cpu.randomPlace(cpuBoard.board, ship1, horizontal),
+      horizontal
+    );
+    cpuBoard.placeShip(
+      ship2,
+      cpu.randomPlace(cpuBoard.board, ship2, !horizontal),
+      !horizontal
+    );
+    cpuBoard.placeShip(
+      ship3,
+      cpu.randomPlace(cpuBoard.board, ship3, horizontal),
+      horizontal
+    );
+    cpuBoard.placeShip(
+      ship4,
+      cpu.randomPlace(cpuBoard.board, ship4, !horizontal),
+      !horizontal
+    );
+    cpuBoard.placeShip(
+      ship5,
+      cpu.randomPlace(cpuBoard.board, ship5, horizontal),
+      horizontal
+    );
+  };
 
-  let turnCount = 0;
 
   const cpuAttack = () => {
     playerBoard.receiveAttack(cpu.randomMove(selections));
@@ -270,15 +296,9 @@ export const game = () => {
   placeShips(playerBoard);
   hitBoard(cpuBoard);
 
-  
-restart.addEventListener('click', () => {
-    location.reload(true)
-  })
+  restart.addEventListener("click", () => {
+    location.reload(true);
+  });
 
-  // const declareWinner = () => {
-  //   if (playerBoard.board.some((obj) => obj.isShip && !playerBoard.board.some((obj) => obj.hit === false))) {
-  //     alert("player wins")
-  //   }
-  // }
-  //console.log(playerBoard.board.some((obj) => obj.isShip))
+  
 };

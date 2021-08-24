@@ -8,11 +8,10 @@
     <title>Asset Management</title>
   </head>
   <body>
-    <!-- <h1>Battleship</h1> -->
     <div class="info-cont">
-    <h2 id="game-info"></h2>
-  </div>
-    <button id="restart">restart</button>
+      <h2 id="game-info"></h2>
+    </div>
+    
     <div class="boards">
       <div class="board" id="player-board">
         <div class="cell player-cell cell-not-hit"></div>
@@ -148,7 +147,6 @@
             <div class="cell ship-cell"></div>
           </div>
         </div>
-        
       </div>
       <div class="board" id="cpu-board">
         <div class="cell cpu-cell cell-not-hit"></div>
@@ -254,24 +252,32 @@
       </div>
     </div>
     <div class="below">
-   
+      <div id="legend">
+        <div id="legend">Legend</div>
+        <div class="legend-row">
+          <div class="cell cell-legend cell-hit"></div>
+          <div>Miss</div>
+        </div>
+        <div class="legend-row">
+          <div class="cell cell-legend cell-ship-hit"></div>
+          <div>Hit</div>
+        </div>
+        <div class="legend-row">
+          <div class="cell cell-legend ship-destroyed"></div>
+          <div>Ship Sunk</div>
+        </div>
+      </div>
+    </div>
+    <div  id="bg">
 
-    <div id="legend">
-      <div id="legend">Legend</div>
-      <div class="legend-row">
-        <div class="cell cell-legend cell-hit"></div>
-        <div>Miss</div>
-      </div>
-      <div class="legend-row">
-        <div class="cell cell-legend cell-ship-hit"></div>
-        <div>Hit</div>
-      </div>
-      <div class="legend-row">
-        <div class="cell cell-legend ship-destroyed"></div>
-        <div>Ship Sunk</div>
-      </div>
     </div>
+    <div id="win-screen">
+      <div class="end-contents" id="winner"></div>
+      <div class="end-contents">Play again?</div>
+      <button class="end-contents" id="restart">restart</button>
+      
     </div>
+
     <script src="main.js"></script>
   </body>
 </html>

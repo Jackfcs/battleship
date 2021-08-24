@@ -1,5 +1,9 @@
 body {
     background-color: rgb(242, 244, 255);
+    margin: 0px;
+    z-index: 1;
+    font-family: verdana, sans-serif;
+    font-weight: 200;
 }
 
 .info-cont {
@@ -14,6 +18,7 @@ body {
     padding: 10px;
     border-radius: 5px;
     width: 30%;
+    min-width: 300px;
     color: rgb(58, 58, 58)
 }
 
@@ -37,6 +42,8 @@ body {
 .cell-legend {
     width: 30px;
     height: 30px;
+    margin-right: 5px;
+    margin-top: 5px;
 }
 
 .cell:hover {
@@ -86,13 +93,16 @@ body {
     color: rgb(71, 71, 71);
     padding: 10px;
     width: 100px;
-    position: relative;
-    top: 270px;
-    left: 10px;
+    margin: 10px;
+    justify-self: center;
 }
 
 #orientation:hover {
     cursor: pointer;
+}
+
+#orientation:active {
+    background-color: rgb(163, 163, 163);
 }
 
 #legend {
@@ -106,14 +116,13 @@ body {
     align-items: center;
 }
 
-
-
 .right {
-    align-self: left;
     display: flex;
     flex-direction: column;
-    position: relative;
-    bottom: 30px;
+    border: solid rgb(58, 58, 58) 1px;
+    border-radius: 5px;
+    align-self: flex-start;
+    height: 300px
 }
 
 .below {
@@ -123,4 +132,52 @@ body {
     justify-content: flex-end;
     position: relative;
     right: 100px;
+}
+
+#win-screen{
+    position: absolute;
+    left: 50%;
+    top: 35%;
+    transform: translate(-50%, -50%);
+    border: solid rgb(58, 58, 58) 1px;
+    border-radius: 10px;
+    display: none;
+    flex-direction: column;
+    justify-items: center;
+    width: 30%;
+    background-color: rgb(242, 244, 255);
+    z-index: 3;
+}
+
+.end-contents {
+    margin: 10px auto 10px auto;
+    font-size: 30px;
+    color: rgb(58, 58, 58)
+    
+}
+
+#restart {
+    border: none;
+    border-radius: 5px;
+    background-color: rgb(202, 202, 202);
+    color: rgb(71, 71, 71);
+    padding: 10px;
+}
+
+#restart:hover {
+    cursor: pointer;
+}
+
+#restart:active {
+    background-color: rgb(163, 163, 163);
+}
+
+#bg {
+    backdrop-filter: blur(5px);
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    position: absolute;
+    top: 0%;
+    display: none;
 }

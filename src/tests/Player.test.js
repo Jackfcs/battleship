@@ -5,6 +5,10 @@ const Player = require('../factories/Player')
 let testShip
 let testBoard
 let testPlayer
+let array = [];
+  for (let i = 0; i < 100; i++) {
+    array.push(i);
+  }
 beforeAll(() => {
     testShip = Ship(2)
     testBoard = GameBoard()
@@ -17,7 +21,7 @@ test("Player returns name", () => {
 
 
 test("randomMove generates a random position to attack", () => {
-    testBoard.receiveAttack(testPlayer.randomMove())
+    testBoard.receiveAttack(testPlayer.randomMove(array))
 
     expect(testBoard.board).toEqual(
       expect.arrayContaining([
