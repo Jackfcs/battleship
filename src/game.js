@@ -241,21 +241,19 @@ export const game = () => {
         updateBoard(cpuBoard, cpuCells);
         cpuAttack();
         if (!cpuBoard.shipsRemain()) {
-          displayEndScreen()
-          endText.textContent = "You Win!"
+          displayEndScreen();
+          endText.textContent = "You Win!";
         } else if (!playerBoard.shipsRemain()) {
-          displayEndScreen()
-          endText.textContent = "You Lose!"
+          displayEndScreen();
+          endText.textContent = "You Lose!";
         }
       });
     });
   };
 
-
   const displayEndScreen = () => {
     winScreen.style.display = "flex";
     bg.style.display = "block";
-    console.log('hi')
   };
 
   const cpuPlace = () => {
@@ -286,11 +284,9 @@ export const game = () => {
     );
   };
 
-
   const cpuAttack = () => {
     playerBoard.receiveAttack(cpu.randomMove(selections));
     updateBoard(playerBoard, playerCells);
-    turnCount++;
   };
 
   placeShips(playerBoard);
@@ -299,6 +295,4 @@ export const game = () => {
   restart.addEventListener("click", () => {
     location.reload(true);
   });
-
-  
 };

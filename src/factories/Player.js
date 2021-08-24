@@ -2,30 +2,23 @@ const Player = (name) => {
   let turns = [];
 
   const randomPlace = (board, ship, horizontal) => {
-    let num
+    let num;
 
     if (!horizontal) {
-        num = Math.floor(Math.random() * 60);
+      num = Math.floor(Math.random() * 60);
       //Prevent ships overlapping
       for (let i = 0; i < ship.length; i++) {
-        console.log(num + (i * 10))
-        while (board[num + (i * 10)].isShip || board[num].isShip) {
+        while (board[num + i * 10].isShip || board[num].isShip) {
           num = Math.floor(Math.random() * 60);
-          console.log('rework')
-          
         }
       }
 
       //Prevent ships placed over border
-      if (num > 109 - ship.length * 10){
+      if (num > 109 - ship.length * 10) {
         num = Math.floor(Math.random() * 60);
       }
-      console.log(num)
-
-
     } else if (horizontal) {
-
-        num = Math.floor(Math.random() * 96);
+      num = Math.floor(Math.random() * 96);
       //Prevent ships overlapping
       while (board[num + ship.length - 1].isShip || board[num].isShip) {
         num = Math.floor(Math.random() * 96);
@@ -38,7 +31,6 @@ const Player = (name) => {
         }
       }
     }
-    console.log(num)
     return num;
   };
 
